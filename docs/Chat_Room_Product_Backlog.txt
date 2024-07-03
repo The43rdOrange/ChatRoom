@@ -1,0 +1,60 @@
+ChatRoom_Product_Backlog
+
+Users
+	Host -> Hosts the chat room
+	Member -> Can join the chat and leave
+
+US1 -> Users can choose what they'd like to do in the application
+	Acceptance Tests
+		Users can choose to do the following
+			Create a chat
+			Join a chat
+			View a historic chat
+			Users can quit the application
+
+US2 -> host can start a chat room
+	As a host I want to be able to start a chat room that allows upto 4 members to join
+	
+	Acceptance Tests
+		A maximum of 4 members can join a chat
+		When any user joins a chat, a system message is displayed saying who has joined and their role
+	
+US3 -> members can join a chat room
+	As a member I'd like to be able to enter a username and then join a chat room so that I will then be part of a chat room
+	
+	Acceptance Tests
+		A member enters a username
+		A member can join a chat room
+		Once a member has joined the chat room a message is displayed on all devices saying who has joined and there roll
+				
+US4 -> Users can send messages
+	As a host or member I want to be able to send messages so that they appear on my screen and other users screens
+
+	Acceptance Tests
+		A host can send a message and it appears on the hosts screen and a members screen
+		A member can send a message and it appears on the hosts screen and a members screen
+
+US5 -> Users can leave and rejoin
+	As a host or member I want to be able to leave a chat at anytime and then rejoin so that 
+
+	Acceptance Test
+		When a user leaves a chat, a message is displayed on the hosts screen saying who has left and there role. 
+		When a user leaves a chat, a message is displayed on the members screen saying who has left and there role. 
+		When a host leaves a new host is nominated and a system message will appear on all users screens stating who the new host is
+
+US6 -> Messages are saved
+	As any user, I'd like to be able to reread past messages that have been sent so that information that was available when the player was part of the chat room are stored 
+
+	Acceptance Test
+		When a user leaves a chat room, the content of the chat is saved with the name being the time that that the user left the chat
+
+US7 -> Historic Messages can be read
+	As any user I'd like to be able to access past chats so that past chats can be reread
+
+	Acceptance Tests
+		When a user starts the app, they have the option to view historic chats
+		When a user has chosen to view a historic chat, the selected historic chat is displayed
+
+US8 -> Escape Sequences
+	\q to go to the main menu
+	\r to rejoin
