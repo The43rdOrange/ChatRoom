@@ -51,6 +51,17 @@ public enum MainMenu implements MenuOption {
             return "Join chat room as host";
         }
     },
+    Member {
+        @Override
+        public String GetUserFriendlyDescription() {
+            return "Join chat room as member";
+        }
+
+        @Override
+        public void Execute() {
+            System.out.println("Member not yet implemented");
+        }
+    },
     ViewHistoricChats {
         @Override
         public String GetUserFriendlyDescription() {
