@@ -7,7 +7,7 @@ public enum MainMenu implements MenuOption {
     Host {
         @Override
         public void Execute() {
-            System.out.println("Not yet implemented");
+            System.out.println("Host not yet implemented");
             /*
             String username = User.GetValidUsernameFromConsole();
 
@@ -48,7 +48,7 @@ public enum MainMenu implements MenuOption {
 
         @Override
         public String GetUserFriendlyDescription() {
-            return "Join chat room";
+            return "Join chat room as host";
         }
     },
     ViewHistoricChats {
@@ -59,7 +59,7 @@ public enum MainMenu implements MenuOption {
 
         @Override
         public void Execute() {
-            System.out.println("Not yet implemented");
+            System.out.println("ViewHistoricChats - Not yet implemented");
         }
     },
     Quit {
@@ -82,14 +82,22 @@ public enum MainMenu implements MenuOption {
         }
         int maxValue;
         int minValue;
-        int userSelectedIndex;
+        int userSelectedIndex = -1;
         boolean isValid;
         do {
             System.out.print("\nEnter the index of the item you'd like to select: ");
-            maxValue = MainMenu.values().length - 1;
-            minValue = 0;
+            maxValue = MainMenu.values().length;
+            minValue = 1;
             Scanner scanner = new Scanner(System.in);
-            userSelectedIndex = scanner.nextInt();
+
+            try{
+                userSelectedIndex = scanner.nextInt();
+            } catch (Exception e){
+                System.out.println("The input was not a number. Try again");
+                isValid = false;
+                continue;
+            }
+
             isValid = maxValue >= userSelectedIndex && minValue <= userSelectedIndex;
 
             /*
@@ -106,10 +114,10 @@ public enum MainMenu implements MenuOption {
             }
 
         } while (!isValid);
-        return MainMenu.values()[userSelectedIndex];
+        return MainMenu.values()[userSelectedIndex-1];
     }
 
     public String GetMenuEntry() {
-        return this.ordinal() + ". " + this.GetUserFriendlyDescription();
+        return this.ordinal()+1 + ". " + this.GetUserFriendlyDescription();
     }
 }
