@@ -1,25 +1,16 @@
 package Menu;
 
-import Main.Main;
+import Main.*;
 import java.util.Scanner;
+
+import Users.*;
 
 public enum MainMenu implements MenuOption {
     Host {
         @Override
         public void Execute() {
-            System.out.println("Not yet implemented");
-            /*
-            String username = User.GetValidUsernameFromConsole();
-
-            Host host = new Host(username);
-            host.JoinChatRoom();
-
-
-            //wait for host to leave chat room
-            do {
-                //host
-            } while (host.isPartOfChatRoom());
-            */
+            Member host = new Member("Host");
+            host.RunSendReceiveMessageThread();
         }
 
         @Override
@@ -30,20 +21,8 @@ public enum MainMenu implements MenuOption {
     Member {
         @Override
         public void Execute() {
-            System.out.println("Not yet implemented");
-            /*
 
-
-            String username = User.GetValidUsernameFromConsole();
-
-            Member member = new Member(username);
-            member.JoinChatRoom();
-
-            //wait for member to leave chat room
-            do {
-
-            } while (member.isPartOfChatRoom());
-             */
+            //ChatRoom chatRoom = new MemberChatRoom();
         }
 
         @Override
@@ -80,26 +59,17 @@ public enum MainMenu implements MenuOption {
         for (MainMenu menuOption : MainMenu.values()) {
             System.out.println(menuOption.GetMenuEntry());
         }
-        int maxValue;
-        int minValue;
+        int maxValue = MainMenu.values().length - 1;
+        int minValue = 0;
+
         int userSelectedIndex;
         boolean isValid;
         do {
             System.out.print("\nEnter the index of the item you'd like to select: ");
-            maxValue = MainMenu.values().length - 1;
-            minValue = 0;
             Scanner scanner = new Scanner(System.in);
             userSelectedIndex = scanner.nextInt();
             isValid = maxValue >= userSelectedIndex && minValue <= userSelectedIndex;
 
-            /*
-            System.out.println("minValue = " + minValue);
-            System.out.println("maxValue = " + maxValue);
-            System.out.println("userSelectedIndex = " + userSelectedIndex);
-            System.out.println("userSelectedIndex >= minValue :" + (userSelectedIndex >= minValue ? "True":"False"));
-            System.out.println("userSelectedIndex <= maxValue :" + (userSelectedIndex <= maxValue ? "True":"False"));
-            System.out.println("isValid: " + isValid);
-            */
 
             if (!isValid) {
                 System.out.println("A value of " + userSelectedIndex + " was not valid");
