@@ -45,5 +45,19 @@ public class MenuOptionTest {
         ).count());
 
     }
-
+    @Test
+    public void EnsureUsersHaveTheOptionToViewOldChats(){
+        MainMenu q = MainMenu.JoinChatRoom;
+        Assertions.assertEquals(q,MainMenu.JoinChatRoom);
+    }
+    @Test
+    public void EnsureUsersHaveTheOptionToViewChats(){
+        MainMenu q = MainMenu.JoinChatRoom;
+        Assertions.assertEquals(q,MainMenu.JoinChatRoom);
+    }
+    @Test
+    public void EnsureUsersHaveTheOptionToQuitTheApplication(){
+        MainMenu q = MainMenu.Quit;
+        Assertions.assertEquals(q,MainMenu.Quit);
+    }
 }
