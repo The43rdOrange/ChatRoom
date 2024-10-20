@@ -32,9 +32,8 @@ public class User {
 
         synchronized (mostRecentUserInput) {
             //whilst the most recent user input has not been processed, wait
-
             //noinspection StatementWithEmptyBody
-            while (!mostRecentUserInput.get().equals(s)) {}
+            while (!mostRecentUserInput.get().equals("")) {}
             //update most recent user input
             mostRecentUserInput.set(s);
         }
@@ -48,6 +47,7 @@ public class User {
     });
 
     public User() {
+        //temp username that will almost certainly be unique for now
         username.set(LocalDateTime.now().toString());
     }
 
