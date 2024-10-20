@@ -2,13 +2,17 @@ package Menu;
 
 import Main.Main;
 import java.util.Scanner;
+import User.User;
+
 
 public enum MainMenu implements MenuOption {
     JoinChatRoom {
         @Override
         public void Execute() {
             System.out.println("Join Chat Room not yet implemented");
-
+            User user = new User();
+            user.JoinChatRoom();
+            user.loop();
         }
 
         @Override

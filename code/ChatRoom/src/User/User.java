@@ -1,10 +1,13 @@
-import net.jcip.annotations.ThreadSafe;
+package User;
+
+import Message.Message;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicReference;
+import Message.TextMessage;
 
 public class User {
     final AtomicReference<String> username = new AtomicReference<>();
@@ -46,6 +49,13 @@ public class User {
 
     public User() {
         username.set(LocalDateTime.now().toString());
+    }
+
+    public void loop() {
+    }
+
+    public void JoinChatRoom() {
+
     }
 }
 

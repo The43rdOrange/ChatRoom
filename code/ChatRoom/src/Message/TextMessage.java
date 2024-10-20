@@ -1,3 +1,5 @@
+package Message;
+
 public class TextMessage implements Message {
     String username;
     String message;
