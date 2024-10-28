@@ -12,7 +12,7 @@ import Message.TextMessage;
 public class User {
     final AtomicReference<String> username = new AtomicReference<>();
     final List<Message> inbox = new ArrayList<>();
-    final AtomicReference<String> mostRecentUserInput = new AtomicReference<>();
+    final List<Message> outbox = new ArrayList<>();
     UserConnectionToHost userConnectionToHost;
 
     Thread inboxThread = new Thread(() -> {
@@ -30,18 +30,14 @@ public class User {
         String s = scanner.nextLine();
 
 
-        synchronized (mostRecentUserInput) {
-            //whilst the most recent user input has not been processed, wait
-            //noinspection StatementWithEmptyBody
-            while (!mostRecentUserInput.get().equals("")) {}
-            //update most recent user input
-            mostRecentUserInput.set(s);
+        synchronized (outbox) {
+            outbox.add(Message.fromString(s));
         }
     });
     Thread outboxThread = new Thread(() -> {
-        synchronized (mostRecentUserInput) {
-            if (!mostRecentUserInput.get().isEmpty()) {
-                userConnectionToHost.addToOutbox(new TextMessage(username.get(), mostRecentUserInput.get()));
+        synchronized (outbox) {
+            while (outbox.size() > 0) {
+                userConnectionToHost.addToOutbox(outbox.remove(0));
             }
         }
     });
