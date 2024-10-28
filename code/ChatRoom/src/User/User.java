@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicReference;
-import Message.TextMessage;
 
 public class User {
     final AtomicReference<String> username = new AtomicReference<>();
@@ -36,8 +35,8 @@ public class User {
     });
     Thread outboxThread = new Thread(() -> {
         synchronized (outbox) {
-            while (outbox.size() > 0) {
-                userConnectionToHost.addToOutbox(outbox.remove(0));
+            while (!outbox.isEmpty()) {
+                userConnectionToHost.addToOutbox(outbox.removeFirst());
             }
         }
     });
