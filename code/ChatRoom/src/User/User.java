@@ -49,6 +49,22 @@ public class User {
     }
 
     public void loop() {
+        boolean continueLoop = true;
+
+        //start threads if they aren't already running
+        while (continueLoop) {
+            if (!inboxThread.isAlive()) {
+                inboxThread.start();
+            }
+
+            if (!outboxThread.isAlive()) {
+                outboxThread.start();
+            }
+
+            if (!getUserInputThread.isAlive()) {
+                getUserInputThread.start();
+            }
+        }
     }
 
     public void JoinChatRoom() {
