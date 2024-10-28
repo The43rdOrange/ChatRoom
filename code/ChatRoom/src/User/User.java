@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicReference;
 
+import Message.TextMessage;
+
 public class User {
     final AtomicReference<String> username = new AtomicReference<>();
     final List<Message> inbox = new ArrayList<>();
@@ -30,7 +32,7 @@ public class User {
 
 
         synchronized (outbox) {
-            outbox.add(Message.fromString(s));
+            outbox.add(new TextMessage(this.username.get(),s));
         }
     });
     Thread outboxThread = new Thread(() -> {
