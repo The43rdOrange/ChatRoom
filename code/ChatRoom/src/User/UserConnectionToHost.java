@@ -3,5 +3,5 @@ package User;
 import Message.Message;
 
 public interface UserConnectionToHost {
-    public void addToOutbox(Message message);
+    void addToInbox(Message message);
 }
