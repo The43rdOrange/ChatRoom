@@ -9,7 +9,7 @@ public enum MainMenu implements MenuOption {
     JoinChatRoom {
         @Override
         public void Execute() {
-            System.out.println("Join Chat Room not yet implemented");
+            System.out.println("Join Chat Room option is not fully implemented");
             User user = new User();
             user.JoinChatRoom();
             user.loop();
