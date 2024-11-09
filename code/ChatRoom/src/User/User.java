@@ -14,8 +14,9 @@ public class User {
     final AtomicReference<String> username = new AtomicReference<>();
     final List<Message> inbox = new ArrayList<>();
     final List<Message> outbox = new ArrayList<>();
+    final Scanner scanner = new Scanner(System.in);
+
     UserConnectionToHost userConnectionToHost;
-    Scanner scanner = new Scanner(System.in);
 
     Thread getInboxThread(){
         return new Thread(() -> {
@@ -31,9 +32,9 @@ public class User {
     }
     Thread getUserInputThread(){
         return new Thread(() -> {
-            System.out.println("Awaiting user input");
+            //System.out.println("Awaiting user input");
             String s = scanner.nextLine();
-            System.out.println("User input was " + s);
+            //System.out.println("User input was " + s);
 
 
             synchronized (outbox) {
@@ -45,7 +46,7 @@ public class User {
         return new Thread(() -> {
             synchronized (outbox) {
                 while (!outbox.isEmpty()) {
-                    userConnectionToHost.addToOutbox(outbox.removeFirst());
+                    userConnectionToHost.addToInbox(outbox.removeFirst());
                 }
             }
         });
